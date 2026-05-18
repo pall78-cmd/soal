@@ -50,6 +50,26 @@ export default function App() {
     }));
   };
 
+  const handleClearOption = (questionId: string) => {
+    setAnswers((prev) => {
+      const next = { ...prev };
+      delete next[questionId];
+      return next;
+    });
+  };
+
+  const handleClearEssay = (questionId: string) => {
+    setEssayAnswers((prev) => {
+      const next = { ...prev };
+      delete next[questionId];
+      return next;
+    });
+  };
+
+  const isAllPGAnswered = questions.every((q) => answers[q.id]);
+  const isAllEssayAnswered = essayQuestions.every((q) => essayAnswers[q.id] && essayAnswers[q.id].trim().length > 0);
+  const isAllAnswered = isAllPGAnswered && isAllEssayAnswered && name.trim() !== '' && email.trim() !== '';
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -203,9 +223,20 @@ export default function App() {
                     </div>
                     
                     <div className="mt-10 sm:mt-12 space-y-6 sm:space-y-8">
-                      <h2 className="text-xl sm:text-2xl font-bold text-slate-800 leading-snug">
-                        {q.text}
-                      </h2>
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <h2 className="text-xl sm:text-2xl font-bold text-slate-800 leading-snug">
+                          {q.text}
+                        </h2>
+                        {answers[q.id] && (
+                          <button
+                            type="button"
+                            onClick={() => handleClearOption(q.id)}
+                            className="text-xs px-3 py-1 font-bold bg-rose-50 text-rose-600 rounded-lg hover:bg-rose-100 transition-colors shrink-0 border border-rose-200"
+                          >
+                            Hapus Jawaban
+                          </button>
+                        )}
+                      </div>
                       
                       <div className="grid grid-cols-1 gap-4">
                         {Object.entries(q.options).map(([letter, text]) => {
@@ -247,9 +278,20 @@ export default function App() {
                       </div>
                       
                       <div className="mt-10 sm:mt-12 space-y-6">
-                        <h2 className="text-lg font-bold text-slate-800 leading-snug">
-                          {q.text}
-                        </h2>
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                          <h2 className="text-lg font-bold text-slate-800 leading-snug flex-1">
+                            {q.text}
+                          </h2>
+                          {essayAnswers[q.id] && essayAnswers[q.id].trim().length > 0 && (
+                            <button
+                              type="button"
+                              onClick={() => handleClearEssay(q.id)}
+                              className="text-xs px-3 py-1 font-bold bg-rose-50 text-rose-600 rounded-lg hover:bg-rose-100 transition-colors shrink-0 border border-rose-200"
+                            >
+                              Hapus Jawaban
+                            </button>
+                          )}
+                        </div>
                         <textarea
                           required
                           rows={4}
@@ -265,10 +307,15 @@ export default function App() {
 
                 {/* Submit Container */}
                 <div className="pt-4 pb-10">
+                  {!isAllAnswered && (
+                     <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl mb-4 text-center shadow-sm">
+                        <p className="text-amber-800 font-medium text-sm">Masih ada soal yang belum dijawab atau identitas belum lengkap. Silakan lengkapi semua sebelum mengirim.</p>
+                     </div>
+                  )}
                   <button 
                     type="submit" 
-                    disabled={isSubmitting}
-                    className="w-full px-10 py-5 rounded-2xl bg-blue-600 text-white font-bold text-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 shadow-md shadow-blue-200 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                    disabled={isSubmitting || !isAllAnswered}
+                    className="w-full px-10 py-5 rounded-2xl bg-blue-600 text-white font-bold text-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 shadow-md shadow-blue-200 transition-all disabled:opacity-70 disabled:bg-slate-400 disabled:shadow-none disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Sedang Menyimpan...' : 'Kirim Jawaban Kuis'}
                   </button>
