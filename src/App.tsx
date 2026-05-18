@@ -7,7 +7,6 @@ type ViewState = 'quiz' | 'success' | 'history';
 interface QuizSubmission {
   id: string;
   name: string;
-  email: string;
   score: number;
   maxScore: number;
   essayScore: number;
@@ -21,7 +20,6 @@ interface QuizSubmission {
 export default function App() {
   const [view, setView] = useState<ViewState>('quiz');
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [essayAnswers, setEssayAnswers] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,7 +32,27 @@ export default function App() {
     if (savedHistory) {
       setHistory(JSON.parse(savedHistory));
     }
+    
+    // Load draft
+    const savedDraft = localStorage.getItem('quiz_draft');
+    if (savedDraft) {
+      try {
+        const parsedDraft = JSON.parse(savedDraft);
+        if (parsedDraft.name) setName(parsedDraft.name);
+        if (parsedDraft.answers) setAnswers(parsedDraft.answers);
+        if (parsedDraft.essayAnswers) setEssayAnswers(parsedDraft.essayAnswers);
+      } catch (e) {
+        console.error("Failed to parse draft", e);
+      }
+    }
   }, []);
+
+  // Save draft whenever state changes
+  useEffect(() => {
+    if (Object.keys(answers).length > 0 || Object.keys(essayAnswers).length > 0 || name) {
+      localStorage.setItem('quiz_draft', JSON.stringify({ name, answers, essayAnswers }));
+    }
+  }, [name, answers, essayAnswers]);
 
   const handleOptionChange = (questionId: string, value: string) => {
     setAnswers((prev) => ({
@@ -68,7 +86,7 @@ export default function App() {
 
   const isAllPGAnswered = questions.every((q) => answers[q.id]);
   const isAllEssayAnswered = essayQuestions.every((q) => essayAnswers[q.id] && essayAnswers[q.id].trim().length > 0);
-  const isAllAnswered = isAllPGAnswered && isAllEssayAnswered && name.trim() !== '' && email.trim() !== '';
+  const isAllAnswered = isAllPGAnswered && isAllEssayAnswered && name.trim() !== '';
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -113,7 +131,6 @@ export default function App() {
     const newSubmission: QuizSubmission = {
       id: Date.now().toString(),
       name,
-      email,
       score: correctCount,
       maxScore: questions.length,
       essayScore: essayCorrectCount,
@@ -134,16 +151,15 @@ export default function App() {
       setIsSubmitting(false);
       setView('success');
       setName('');
-      setEmail('');
       setAnswers({});
       setEssayAnswers({});
+      localStorage.removeItem('quiz_draft');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 800); // simulate slight delay
   };
 
   const resetQuiz = () => {
     setName('');
-    setEmail('');
     setAnswers({});
     setEssayAnswers({});
     setCurrentSubmission(null);
@@ -196,16 +212,6 @@ export default function App() {
                          required 
                          value={name}
                          onChange={(e) => setName(e.target.value)}
-                         className="w-full p-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:outline-none bg-slate-50 transition-all font-medium text-slate-800" 
-                       />
-                     </div>
-                     <div>
-                       <label className="block text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Alamat Email / Akun Sekolah *</label>
-                       <input 
-                         type="email" 
-                         required 
-                         value={email}
-                         onChange={(e) => setEmail(e.target.value)}
                          className="w-full p-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 focus:outline-none bg-slate-50 transition-all font-medium text-slate-800" 
                        />
                      </div>
@@ -491,7 +497,6 @@ export default function App() {
                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
                          <div>
                            <h3 className="font-bold text-xl text-slate-800">{record.name}</h3>
-                           <p className="text-slate-500 font-medium">{record.email}</p>
                          </div>
                          <div className="text-left sm:text-right flex flex-col sm:items-end">
                            <div className="flex gap-2 mb-2">
