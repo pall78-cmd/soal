@@ -176,8 +176,8 @@ export default function App() {
             <BookOpen className="w-8 h-8 text-blue-600" />
           </div>
           <div>
-            <h1 className="text-white font-bold text-lg sm:text-xl leading-tight">Evaluasi SAT Genap PPKn XI</h1>
-            <p className="text-blue-100 text-xs font-medium uppercase tracking-wider">SMK Negeri Teknologi Indonesia</p>
+            <h1 className="text-white font-bold text-lg sm:text-xl leading-tight">Evaluasi Komprehensif: Birrul Walidain</h1>
+            <p className="text-blue-100 text-xs font-medium uppercase tracking-wider">Bimbingan Konseling, Etika & Karakter Terpadu</p>
           </div>
         </div>
         <div className="flex items-center space-x-2 sm:space-x-4 w-full sm:w-auto overflow-x-auto hide-scrollbar">
@@ -432,6 +432,16 @@ export default function App() {
                               );
                             })}
                           </div>
+
+                          {q.rationale && (
+                            <div className="mt-6 p-4 rounded-2xl bg-blue-50 border border-blue-100 text-sm flex gap-3 text-left">
+                              <span className="text-xl shrink-0">💡</span>
+                              <div>
+                                <span className="font-bold text-blue-800 block mb-1">Rasional & Analisis:</span>
+                                <p className="text-slate-700 font-medium leading-relaxed">{q.rationale}</p>
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </div>
                     );
@@ -535,6 +545,12 @@ export default function App() {
                                        </span>
                                      )}
                                    </div>
+                                   {q.rationale && (
+                                     <div className="mt-2 text-xs text-slate-500 bg-white border border-slate-100 rounded-lg p-2 leading-relaxed text-left">
+                                       <span className="font-bold text-slate-600 mb-0.5 block">💡 Analisis:</span>
+                                       {q.rationale}
+                                     </div>
+                                   )}
                                  </div>
                                );
                              })}

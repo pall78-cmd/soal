@@ -3,261 +3,184 @@ export interface QuestionPG {
   text: string;
   options: Record<string, string>;
   correctAnswer: string;
+  rationale: string;
 }
 
 export interface QuestionEssay {
   id: string;
+  title: string;
   text: string;
   keywords: string[];
+  referenceAnswer: string;
 }
 
 export const multipleChoiceQuestions: QuestionPG[] = [
   {
     id: "01",
-    text: "Manakah di bawah ini yang paling tepat menggambarkan definisi hukum menurut para ahli hukum secara umum?",
+    text: "Perintah teologis dalam Surah Al-Isra ayat 23-24 secara spesifik melarang anak untuk mengucapkan kata 'ah' atau membentak orang tua. Secara substantif, larangan ini menegaskan bahwa...",
     options: {
-      A: "Aturan tertulis yang dibuat tanpa sanksi nyata bagi pelanggarnya",
-      B: "Peraturan hidup yang bersifat memaksa, mengatur tata tertib, dan dibuat oleh badan resmi berwajib",
-      C: "Kesepakatan tidak tertulis yang hanya berlaku untuk kelompok masyarakat adat",
-      D: "Norma sosial yang sanksinya diserahkan sepenuhnya kepada kesadaran masing-masing individu",
+      A: "Komunikasi verbal kepada orang tua harus dijaga pada tingkat kesopanan tertinggi, bahkan pada ekspresi kekesalan terkecil.",
+      B: "Anak tidak diperbolehkan memiliki perbedaan pendapat sama sekali dengan orang tua.",
+      C: "Kewajiban anak hanya terbatas pada menjaga ucapan, bukan pada tindakan fisik.",
+      D: "Orang tua memiliki otoritas mutlak untuk menentukan segala aspek kehidupan anak tanpa pengecualian."
     },
-    correctAnswer: "B",
+    correctAnswer: "A",
+    rationale: "Larangan kata 'ah' menunjukkan bahwa standar etika verbal anak tidak boleh mencederai perasaan orang tua sedikit pun."
   },
   {
     id: "02",
-    text: "Sistem hukum yang berlaku di suatu negara pada dasarnya merupakan...",
+    text: "Ditinjau dari norma sosial, perilaku menghormati orang tua dianggap sebagai indikator utama dari...",
     options: {
-      A: "Kumpulan aturan yang terpisah-pisah dan tidak saling berhubungan",
-      B: "Satu kesatuan utuh yang terdiri dari unsur-unsur hukum yang saling berkaitan untuk mencapai tujuan negara",
-      C: "Aturan-aturan internasional yang dipaksakan masuk ke dalam hukum nasional",
-      D: "Doktrin para ahli hukum yang belum disahkan oleh lembaga legislatif",
+      A: "Kapasitas intelektual dan pencapaian akademik anak.",
+      B: "Kualitas moral, kesopanan, dan karakter individu dalam struktur masyarakat.",
+      C: "Tingkat stratifikasi dan kelas sosial ekonomi keluarga.",
+      D: "Kemampuan anak dalam mengadopsi budaya modern yang dinamis."
     },
     correctAnswer: "B",
+    rationale: "Masyarakat menilai integritas moral seseorang salah satunya dari cara ia memperlakukan lingkaran sosial terdekatnya, yaitu keluarga."
   },
   {
     id: "03",
-    text: "Agar berbagai peraturan di suatu negara dapat membentuk suatu \"sistem hukum\" yang baik, syarat utama yang harus dipenuhi adalah...",
+    text: "Dari perspektif psikologi perkembangan, pembentukan karakter anak yang baik sangat dipengaruhi oleh relasi yang harmonis di rumah. Mengapa demikian?",
     options: {
-      A: "Peraturan harus sering diubah mengikuti tren media sosial",
-      B: "Antara peraturan yang satu dengan peraturan lainnya tidak boleh saling bertentangan dan harus konsisten",
-      C: "Semua pasal harus bersumber dari hukum negara asing",
-      D: "Sanksi hukum harus diserahkan kepada keputusan massa di jalanan",
+      A: "Karena rumah yang harmonis menghilangkan kebutuhan anak untuk berinteraksi dengan dunia luar.",
+      B: "Sebab interaksi positif dengan orang tua menjadi cetak biru (blueprint) emosional dan sosial anak dalam membangun hubungan di masa depan.",
+      C: "Karena keharmonisan rumah tangga secara otomatis menjamin anak bebas dari gangguan kecemasan.",
+      D: "Sebab orang tua yang harmonis cenderung tidak pernah menegur atau mendisiplinkan anak mereka."
     },
     correctAnswer: "B",
+    rationale: "Lingkungan domestik yang aman melatih regulasi emosi dan kemampuan berempati yang menetap hingga dewasa."
   },
   {
     id: "04",
-    text: "Di bawah ini yang merupakan perwujudan dari fungsi, tugas, dan tujuan utama dibentuknya hukum dalam masyarakat adalah...",
+    text: "Seorang anak secara rutin membantu membersihkan rumah dan mencuci piring tanpa diminta. Tindakan ini merefleksikan cara menghormati orang tua dalam ranah...",
     options: {
-      A: "Membatasi hak warga negara agar ruang gerak mereka menjadi sempit",
-      B: "Menjamin kepastian hukum, menegakkan keadilan, serta menciptakan ketertiban dan kedamaian",
-      C: "Memberikan keistimewaan dan kekebalan hukum bagi pejabat publik",
-      D: "Menghapus semua perbedaan kelas ekonomi di masyarakat secara paksa",
+      A: "Kontribusi fisik untuk meringankan beban domestik orang tua.",
+      B: "Kepatuhan doktrinal terhadap aturan tertulis yang kaku.",
+      C: "Apresiasi finansial tidak langsung kepada kepala keluarga.",
+      D: "Upaya pengkondisian agar mendapatkan imbalan materi."
     },
-    correctAnswer: "B",
+    correctAnswer: "A",
+    rationale: "Tindakan motorik langsung di rumah tangga berfungsi membagi beban kerja fisik demi kesejahteraan bersama."
   },
   {
     id: "05",
-    text: "Selain menciptakan ketertiban, tugas hukum juga harus mampu memberikan \"kemanfaatan\". Arti dari fungsi kemanfaatan hukum di sini adalah...",
+    text: "Mendengarkan nasihat orang tua dengan saksama, meskipun anak memiliki pandangan yang berbeda, menunjukkan bentuk penghormatan yang melibatkan proses...",
     options: {
-      A: "Hukum harus bisa mendatangkan kebahagiaan dan keuntungan bagi sebanyak-banyaknya orang",
-      B: "Hukum hanya bermanfaat untuk menambah kas atau pendapatan finansial negara",
-      C: "Hukum digunakan untuk membantu pihak tertentu memenangkan persaingan bisnis",
-      D: "Aturan hukum wajib mementingkan keuntungan golongan penguasa terlebih dahulu",
+      A: "Penundukan diri secara pasif tanpa hak menjawab.",
+      B: "Regulasi emosi dan kepatuhan mental yang kritis.",
+      C: "Abaikan terhadap logika demi menjaga kedamaian semu.",
+      D: "Formalitas interaksi untuk menghindari hukuman fisik."
     },
-    correctAnswer: "A",
+    correctAnswer: "B",
+    rationale: "Anak menahan ego untuk tidak memotong pembicaraan, merefleksikan kematangan emosional dan penghargaan terhadap pengalaman orang tua."
   },
   {
     id: "06",
-    text: "Perhatikan pernyataan berikut! Manakah yang termasuk ke dalam ciri-ciri utama dari hukum?",
+    text: "Mengapa tindakan sederhana seperti mendoakan orang tua setiap hari dikategorikan sebagai aspek penting dalam birrul walidain?",
     options: {
-      A: "Adanya perintah atau larangan yang sifatnya opsional (boleh dilanggar)",
-      B: "Berisi petunjuk yang hanya berlaku bagi masyarakat yang belum dewasa",
-      C: "Peraturan mengenai tingkah laku manusia, terdapat perintah/larangan, dan sanksinya tegas",
-      D: "Dibuat secara spontan oleh masyarakat saat terjadi suatu pelanggaran",
+      A: "Karena doa merupakan satu-satunya indikator bahwa seorang anak telah berbakti.",
+      B: "Sebab doa merefleksikan ikatan spiritual yang mendalam dan harapan tulus akan keselamatan orang tua melampaui batas materi.",
+      C: "Karena doa dapat menggantikan seluruh kewajiban fisik anak di rumah.",
+      D: "Sebab mendoakan orang tua secara otomatis menghapus semua kesalahan masa lalu anak."
     },
-    correctAnswer: "C",
+    correctAnswer: "B",
+    rationale: "Doa melatih jiwa anak untuk selalu terhubung secara transendental dengan kesejahteraan orang tua."
   },
   {
     id: "07",
-    text: "Ciri utama yang membedakan penegakan norma hukum dengan norma kesusilaan di dalam kehidupan bermasyarakat adalah...",
+    text: "Ketika orang tua telah meninggal dunia, manakah bentuk transformasi bakti anak yang berpindah ke ranah metafisika/spiritual?",
     options: {
-      A: "Norma hukum sanksinya langsung dirasakan berupa rasa penyesalan batin",
-      B: "Norma hukum sanksinya tegas, nyata, dan dapat dipaksakan oleh aparat negara",
-      C: "Norma hukum bersumber dari bisikan hati nurani individu masing-masing",
-      D: "Norma hukum tidak memerlukan alat kelengkapan negara seperti polisi atau hakim",
+      A: "Menjaga kebersihan rumah peninggalan almarhum.",
+      B: "Mendoakan ampunan dan mengalirkan pahala amal sholeh untuk mereka.",
+      C: "Mengurus pembagian harta warisan secara adil.",
+      D: "Menyimpan foto-foto lama di tempat yang aman."
     },
     correctAnswer: "B",
+    rationale: "Bakti spiritual melintasi batas kematian melalui jalur transendental yang diyakini dalam nilai keagamaan."
   },
   {
     id: "08",
-    text: "Contoh sikap nyata warga negara yang mencerminkan upaya menjaga harmoni dalam keberagaman suku, agama, dan ras di Indonesia adalah...",
+    text: "Ziarah ke kubur orang tua dan membersihkan makamnya memiliki esensi psikologis dan sosial bagi anak yang ditinggalkan, yaitu...",
     options: {
-      A: "Hanya mau berteman dan bekerja sama dengan orang yang satu daerah asal",
-      B: "Mengembangkan sikap etnosentrisme yang menganggap budaya sendiri paling hebat",
-      C: "Mengembangkan sikap toleransi, empati, dan saling menghormati di tengah perbedaan",
-      D: "Menuntut semua kelompok minoritas untuk mengikuti seluruh adat kelompok mayoritas",
+      A: "Sebagai sarana katarsis emosional, merawat memori, dan refleksi atas mortalitas diri.",
+      B: "Upaya formal untuk pamer bakti kepada kerabat yang melihat.",
+      C: "Metode untuk meminta petunjuk arah masa depan dari almarhum.",
+      D: "Langkah wajib untuk memastikan harta warisan tidak bermasalah."
     },
-    correctAnswer: "C",
+    correctAnswer: "A",
+    rationale: "Ziarah membantu proses berduka (griefing process) menjadi lebih sehat melalui tindakan penghormatan fisik pada peristirahatan terakhir."
   },
   {
     id: "09",
-    text: "Arti hukum yang sebenarnya di dalam tatanan bernegara bukan sekadar deretan pasal di atas kertas, melainkan...",
+    text: "Mengamalkan wasiat dan menunaikan hutang orang tua yang wafat merupakan bentuk implementasi bakti yang menyentuh ranah...",
     options: {
-      A: "Alat bagi penguasa untuk menekan hak-hak oposisi secara legal",
-      B: "Instrumen hidup yang dijalankan secara adil guna melindungi hak-hak seluruh warga tanpa tebang pilih",
-      C: "Aturan baku yang tidak boleh diubah atau direvisi sama sekali sepanjang masa",
-      D: "Dokumen formal yang hanya perlu dipahami oleh penegak hukum saja",
+      A: "Estetika domestik.",
+      B: "Kewajiban moral, sosial, dan akuntabilitas hukum.",
+      C: "Kreativitas finansial mandiri.",
+      D: "Regulasi emosional internal."
     },
     correctAnswer: "B",
+    rationale: "Utang dan wasiat melibatkan hak orang lain di masyarakat yang harus diselesaikan agar nama baik almarhum tetap bersih secara hukum dan moral."
   },
   {
     id: "10",
-    text: "Sebagai konsekuensi dari status bahwa negara Indonesia merupakan negara hukum, maka segala tatanan kekuasaan pemerintahan harus...",
+    text: "Dalam skenario kritis di mana orang tua memberikan nasihat atau perintah yang secara objektif keliru atau melanggar prinsip kebenaran, tindakan anak yang paling logis adalah...",
     options: {
-      A: "Berdasarkan atas hukum yang berlaku, bukan didasarkan atas kekuasaan belaka",
-      B: "Tunduk pada keputusan organisasi atau lembaga politik internasional internasional",
-      C: "Diatur sepenuhnya berdasarkan instruksi langsung dari presiden tanpa undang-undang",
-      D: "Mengikuti kehendak kelompok massa yang memiliki jumlah anggota paling banyak",
+      A: "Menolak perintah tersebut secara tegas dengan konfrontasi terbuka agar mereka sadar.",
+      B: "Menuruti perintah demi asas kepatuhan mutlak tanpa memedulikan risiko.",
+      C: "Menolak esensi perintahnya secara substantif namun tetap menjaga diksi dan cara penyampaian yang santun.",
+      D: "Pura-pura setuju di depan mereka namun mengabaikannya secara diam-diam tanpa penjelasan."
     },
-    correctAnswer: "A",
+    correctAnswer: "C",
+    rationale: "Menjaga kebenaran objektif harus diseimbangkan dengan cara berkomunikasi yang tidak merendahkan martabat orang tua."
   },
   {
     id: "11",
-    text: "Di dalam sistem tata urutan perundang-undangan di Indonesia, yang berkedudukan sebagai hukum dasar tertulis tertinggi nasional adalah...",
+    text: "Konsep 'Birrul Walidain' secara etimologis berakar dari bahasa Arab. Arti substantif dari kata 'Al-Birr' dalam konteks hubungan keluarga adalah...",
     options: {
-      A: "Peraturan Pemerintah (PP)",
-      B: "Peraturan Daerah (Perda) Provinsi",
-      C: "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945",
-      D: "Kitab Undang-Undang Hukum Pidana (KUHP)",
+      A: "Ketaatan mekanis tanpa proses berpikir.",
+      B: "Kebaikan yang luas, tulus, dan mencakup aspek kebajikan moral tingkat tinggi.",
+      C: "Pemberian materi atau hadiah secara berkala.",
+      D: "Rasa takut akan konsekuensi hukuman dari figur otoritas."
     },
-    correctAnswer: "C",
+    correctAnswer: "B",
+    rationale: "'Al-Birr' bukan sekadar berbuat baik biasa, melainkan puncak kebajikan yang didasari ketulusan mendalam."
   },
   {
     id: "12",
-    text: "Seseorang yang sudah divonis bersalah oleh hakim dan berstatus sebagai terpidana di lembaga pemasyarakatan tetap memiliki hak konstitusional yang dilindungi hukum, yaitu...",
+    text: "Jika seorang anak menolak membantu pekerjaan rumah dengan alasan sedang sibuk bermain game, dari sudut pandang psikologi sosial ia sedang mengalami...",
     options: {
-      A: "Hak untuk bebas keluar masuk penjara kapan saja tanpa izin",
-      B: "Hak untuk mendapatkan perlakuan secara manusiawi, remisi hukum, serta pembinaan diri",
-      C: "Hak mutlak untuk menolak menjalankan seluruh sanksi hukuman yang dijatuhkan",
-      D: "Hak untuk menuntut balik para saksi tanpa melalui prosedur sidang ulang",
-    },
-    correctAnswer: "B",
-  },
-  {
-    id: "13",
-    text: "Bentuk kontribusi paling tepat bagi generasi muda (seperti anak SMK) dalam menggunakan literasi digital untuk menjaga harmoni sosial di masyarakat adalah...",
-    options: {
-      A: "Ikut meramaikan kolom komentar dengan saling adu argumen berbau SARA",
-      B: "Membuat dan menyebarkan konten kreatif yang mengampanyekan toleransi serta menolak hoaks",
-      C: "Membagikan berita sensasional yang belum tervalidasi kebenarannya biar cepat viral",
-      D: "Bersikap apatis dan tidak peduli terhadap segala isu sosial yang terjadi di sekitarnya",
-    },
-    correctAnswer: "B",
-  },
-  {
-    id: "14",
-    text: "Sila dalam Pancasila yang secara esensial berfungsi sebagai payung pelindung persatuan dan paling berkaitan langsung dengan perwujudan harmoni sosial di tengah kemajemukan bangsa adalah...",
-    options: {
-      A: "Sila pertama",
-      B: "Sila kedua",
-      C: "Sila ketiga",
-      D: "Sila keempat",
-    },
-    correctAnswer: "C",
-  },
-  {
-    id: "15",
-    text: "Doktrin dalam ranah hukum formil diartikan sebagai sumber hukum yang berasal dari...",
-    options: {
-      A: "Perjanjian tertulis yang dibuat oleh dua negara atau lebih",
-      B: "Pendapat atau pandangan para ahli hukum terkemuka yang memiliki pengaruh besar",
-      C: "Putusan hakim terdahulu yang dijadikan acuan dalam perkara serupa",
-      D: "Kebiasaan masyarakat adat yang dipelihara turun-temurun",
-    },
-    correctAnswer: "B",
-  },
-  {
-    id: "16",
-    text: "Apabila suatu undang-undang dibuat dengan merujuk pada keyakinan hidup, nilai sosial, dan kesadaran hukum yang tumbuh di dalam masyarakat, maka undang-undang tersebut bersumber dari...",
-    options: {
-      A: "Sumber hukum formil",
-      B: "Sumber hukum materiil",
-      C: "Yurisprudensi internasional",
-      D: "Traktat bilateral",
-    },
-    correctAnswer: "B",
-  },
-  {
-    id: "17",
-    text: "Mengapa prinsip keadilan sosial (Sila ke-5 Pancasila) dinilai sangat krusial dan mendasar dalam menjaga harmoni di tengah keberagaman?",
-    options: {
-      A: "Karena ketimpangan sosial dan ekonomi yang tajam merupakan akar utama pemicu konflik horizontal",
-      B: "Karena prinsip keadilan sosial melarang pembentukan komunitas adat daerah",
-      C: "Karena keadilan sosial hanya fokus pada pembagian bantuan finansial merata tanpa aturan",
-      D: "Karena keadilan sosial mengharuskan peleburan seluruh unsur kebudayaan lokal menjadi satu",
+      A: "Disregulasi empati dan kegagalan manajemen prioritas egoistik.",
+      B: "Strategi adaptasi kognitif yang sehat terhadap stres akademik.",
+      C: "Perkembangan kemandirian personal yang optimal.",
+      D: "Indikasi tingginya kapasitas fokus pada satu objek."
     },
     correctAnswer: "A",
-  },
-  {
-    id: "18",
-    text: "Hukum memiliki sifat mengatur dan memaksa. Pernyataan di bawah ini yang paling tepat menggambarkan sifat memaksa dari hukum adalah...",
-    options: {
-      A: "Hukum dapat diabaikan jika situasi di lapangan dinilai kurang mendukung",
-      B: "Hukum memiliki sanksi tegas dan sanksi tersebut mengikat wajib dilaksanakan bagi siapa saja yang melanggar",
-      C: "Hukum memaksa masyarakat untuk menganut satu ideologi kelompok mayoritas saja",
-      D: "Sifat hukum memaksa hanya berlaku bagi masyarakat kelas bawah",
-    },
-    correctAnswer: "B",
-  },
-  {
-    id: "19",
-    text: "Kondisi harmoni sosial di dalam kehidupan bertanah air dapat dicapai secara berkelanjutan apabila...",
-    options: {
-      A: "Masyarakat sepakat untuk menutup diri dari pengaruh budaya luar",
-      B: "Setiap elemen masyarakat saling menghormati peran, fungsi, dan perbedaan satu sama lain dalam keselarasan",
-      C: "Pemerintah melarang kegiatan diskusi publik yang membahas keberagaman",
-      D: "Semua warga negara diwajibkan menggunakan satu bahasa daerah yang sama",
-    },
-    correctAnswer: "B",
-  },
-  {
-    id: "20",
-    text: "Penggolongan hukum berdasarkan isinya dibagi menjadi dua ranah utama, yaitu hukum publik dan hukum privat. Contoh kasus yang masuk ranah hukum privat adalah...",
-    options: {
-      A: "Kasus pencurian kendaraan bermotor milik warga",
-      B: "Pelanggaran rambu lalu lintas jalan raya oleh pengemudi",
-      C: "Sengketa pembagian harta warisan atau perjanjian sewa menyewa rumah antarwarga",
-      D: "Kasus korupsi dana anggaran pembangunan daerah",
-    },
-    correctAnswer: "C",
+    rationale: "Penolakan membantu demi hiburan pribadi menunjukkan dominasi dorongan kesenangan instan (instant gratification) di atas tanggung jawab empati keluarga."
   }
 ];
 
 export const essayQuestions: QuestionEssay[] = [
   {
     id: "21",
-    text: "Sebutkan dan jelaskan secara singkat macam-macam sumber hukum formil yang berlaku dalam tata hukum di Indonesia!",
-    keywords: ["undang-undang", "kebiasaan", "yurisprudensi", "traktat", "doktrin"]
+    title: "Integrasi Tiga Pilar Etika",
+    text: "Kisi-kisi bimbingan konseling memetakan tiga alasan utama kewajiban menghormati orang tua: Teologis (agama), Sosial (norma), dan Psikologis (karakter). Analisis bagaimana ketiga pilar ini saling berkelindan dan memperkuat satu sama lain. Apa konsekuensi logis pada kepribadian seorang remaja jika salah satu pilar tersebut diabaikan dalam pemahaman baktinya?",
+    keywords: ["teologis", "sosial", "psikologis", "karakter", "norma", "agama", "moral", "kepribadian"],
+    referenceAnswer: "Tiga pilar ini saling berkaitan karena aspek teologis memberikan fondasi hukum, aspek sosial memberikan ruang implementasi dalam norma kelompok, dan aspek psikologis membentuk struktur karakter internal remaja."
   },
   {
     id: "22",
-    text: "Kekayaan budaya Indonesia salah satunya tecermin dari keberagaman senjata tradisional. Sebutkan 4 nama senjata tradisional beserta daerah asalnya secara tepat!",
-    keywords: ["rencong", "aceh", "mandau", "kalimantan", "badik", "sulawesi", "keris", "jawa", "golok", "kujang", "celurit", "madura", "parang"]
+    title: "Dilema Kepatuhan Kritis pada Keluarga Disfungsional",
+    text: "Menghormati orang tua tidak berarti menganut ketaatan buta (blind obedience). Jika dalam sebuah konseling ditemukan kasus di mana orang tua secara konstan memberikan nasihat yang toksik, destruktif bagi kesehatan mental anak, atau melanggar nilai kebenaran objektif, formulasikan langkah resolusi konflik yang paling rasional. Bagaimana anak dapat mempertahankan batas kesehatan mentalnya (personal boundaries) namun di saat yang sama tetap menjaga koridor etika birrul walidain tanpa terkesan durhaka?",
+    keywords: ["batasan", "boundaries", "toksik", "kritis", "santun", "etika", "komunikasi", "rasional"],
+    referenceAnswer: "Anak dapat membangun batasan personal yang sehat secara rasional dengan cara mengomunikasikan penolakan terhadap hal destruktif secara santun tanpa harus melakukan konfrontasi fisik atau verbal yang kasar."
   },
   {
     id: "23",
-    text: "Mengapa yurisprudensi dan traktat dapat diakui sebagai sumber hukum formil di sebuah negara? Jelaskan letak kekuatan mengikatnya!",
-    keywords: ["putusan hakim", "sebelumnya", "perjanjian", "antar negara", "internasional", "mengikat", "disahkan"]
-  },
-  {
-    id: "24",
-    text: "Jelaskan apa nilai utama dari diterapkannya pendidikan multikultural bagi para siswa di lingkungan sekolah yang heterogen!",
-    keywords: ["toleransi", "menghargai", "perbedaan", "keberagaman", "saling", "empati", "rukun", "harmoni"]
-  },
-  {
-    id: "25",
-    text: "Mengapa suatu hukum harus memiliki sifat mengikat dan memaksa bagi seluruh elemen masyarakat tanpa terkecuali? Analisis dampak yang akan terjadi jika hukum kehilangan kedua sifat tersebut!",
-    keywords: ["ketertiban", "kacau", "dilanggar", "adil", "aturan", "sanksi", "main hakim sendiri", "tidak aman"]
+    title: "Kontinuitas Bakti Melampaui Batas Eksistensi",
+    text: "Kematian mengubah dimensi hubungan antara anak dan orang tua dari interaksi fisik-duniawi menjadi interaksi spiritual dan hukum-sosial (melalui doa, wasiat, dan utang). Jelaskan mengapa penyelesaian kewajiban material seperti hutang dan pengamalan wasiat dikategorikan sebagai bentuk penghormatan tertinggi pasca-kehidupan. Hubungkan analisis Anda dengan konsep akuntabilitas moral seorang anak terhadap kehormatan nama baik almarhum orang tuanya di masyarakat.",
+    keywords: ["wasiat", "hutang", "spiritual", "akuntabilitas", "moral", "reputasi", "tanggung jawab", "masyarakat"],
+    referenceAnswer: "Penyelesaian hutang dan wasiat adalah wujud akuntabilitas moral anak untuk menjaga integritas serta nama baik orang tua di lingkungan masyarakat setelah mereka wafat."
   }
 ];
